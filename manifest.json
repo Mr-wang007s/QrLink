@@ -1,0 +1,6 @@
+{
+  "name": "QrLink",
+  "id": 95588471726458,
+  "main": "dist/main.js",
+  "ui": "dist/index.html"
+}
