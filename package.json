@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn dev:main & vite build -c vite.hmr.config.ts & vite -c vite.hmr.config.ts ",
+    "dev": "yarn dev:ui & yarn dev:main & vite -c vite.hmr.config.ts",
+    "dev:ui": "vite build -c vite.hmr.config.ts",
     "dev:main": "cross-env TARGET=main NODE_ENV=development vite build --mode development -w",
     "build": "yarn build:ui && yarn build:main && rm -rf ./dist/assets",
     "build:ui": "cross-env TARGET=ui vite build",
