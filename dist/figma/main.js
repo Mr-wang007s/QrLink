@@ -1,0 +1,1 @@
+(function(i){typeof define=="function"&&define.amd?define(i):i()})(function(){"use strict";figma.editorType==="figma"&&figma.showUI(__html__,{width:320,height:390}),figma.editorType==="figjam"&&figma.showUI(__html__)});

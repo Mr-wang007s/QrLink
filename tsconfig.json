@@ -14,9 +14,6 @@
     "jsx": "preserve",
     "importHelpers": true,
     "lib": ["esnext", "dom"],
-    "types": [
-      "@mastergo/plugin-typings"
-    ],
     "paths": {
       "@lib/*": ["./lib/*"],
       "@ui/*": ["./ui/*"],
@@ -27,7 +24,6 @@
     "./ui/**/*.ts",
     "./ui/**/*.vue",
     "./typings/*.d.ts",
-    "./lib/**/*.ts",
-    "./messages/**/*.ts",
+    "./main/**/*.ts",
   ]
 }

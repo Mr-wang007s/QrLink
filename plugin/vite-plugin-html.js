@@ -1,7 +1,7 @@
-export function myVitePlugin(options) {
+export function VitePluginHtml(options) {
     let config = null;
     return {
-      name: 'vite-plugin-xxx',
+      name: 'vite-plugin-html',
       configResolved(c) {
         config = c;
       },

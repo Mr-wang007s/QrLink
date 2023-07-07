@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": [
+      "@yaowz/plugin-typings"
+    ],
+  },
+}

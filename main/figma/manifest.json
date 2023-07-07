@@ -1,0 +1,13 @@
+{
+  "name": "QrLink",
+  "id": "1258711372526716939",
+  "api": "1.0.0",
+  "main": "main.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": [
+    "figma",
+    "figjam"
+  ],
+  "ui": "index.html"
+}
