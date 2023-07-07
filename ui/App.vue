@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { ref, watch, onMounted } from 'vue';
 import QRCode from 'qrcode';
-const shareLink = ref('https://github.com/Mr-wang007s/QrLink')
+const shareLink = ref('https://codesign.qq.com?form=qr')
 let canvas:any = null
 
 // 在组件挂载之后
