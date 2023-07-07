@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": [
+      "@mastergo/plugin-typings"
+    ],
+  },
+}

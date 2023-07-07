@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { defineConfig, BuildOptions } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { myVitePlugin } from './plugin/myPlugin';
+import { VitePluginHtml } from './plugin/vite-plugin-html';
 
 const HOST = "127.0.0.1";
 const PORT = 8088;
@@ -24,7 +24,7 @@ export default defineConfig(():any => {
   return {
     plugins: [
       vue(),
-      myVitePlugin({
+      VitePluginHtml({
         baseUrl: `http://${HOST}:${PORT}/`
       }),
     ],
@@ -41,9 +41,7 @@ export default defineConfig(():any => {
     },
     resolve: {
       alias: {
-        "@lib": resolve(__dirname, './lib'),
         "@ui": resolve(__dirname, './ui'),
-        "@messages": resolve(__dirname, './messages'),
       }
     },
   }

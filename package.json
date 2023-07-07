@@ -1,15 +1,18 @@
 {
-  "name": "my-plugin",
+  "name": "QrLink",
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "yarn dev:ui & yarn dev:main & vite -c vite.hmr.config.ts",
-    "dev:ui": "vite build -c vite.hmr.config.ts",
-    "dev:main": "cross-env TARGET=main NODE_ENV=development vite build --mode development -w",
+    "dev": "yarn dev:ui && yarn dev:main & vite -c vite.hmr.config.ts",
+    "dev:ui": "cross-env TARGET=ui PLATFORM=figma vite build -c vite.hmr.config.ts",
+    "dev:main": "cross-env TARGET=main PLATFORM=figma NODE_ENV=development vite build --mode development -w",
     "build": "yarn build:ui && yarn build:main && rm -rf ./dist/assets",
     "build:ui": "cross-env TARGET=ui vite build",
-    "build:main": "cross-env TARGET=main vite build"
+    "build:main": "yarn build:figma && yarn build:mastergo && yarn build:pixso",
+    "build:figma": "cross-env TARGET=main PLATFORM=figma vite build",
+    "build:mastergo": "cross-env TARGET=main PLATFORM=mastergo vite build",
+    "build:pixso": "cross-env TARGET=main PLATFORM=pixso vite build"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
@@ -20,7 +23,9 @@
     "vite-plugin-singlefile": "^0.7.1"
   },
   "dependencies": {
-    "@mastergo/plugin-typings": "^1.0.0",
+    "@mastergo/plugin-typings": "*",
+    "@figma/plugin-typings": "*",
+    "@yaowz/plugin-typings": "*",
     "qrcode": "^1.5.3",
     "vue": "^3.2.31"
   }

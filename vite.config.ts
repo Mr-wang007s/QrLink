@@ -2,10 +2,12 @@ import { resolve } from 'path'
 import { defineConfig, BuildOptions } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteSingleFile } from "vite-plugin-singlefile"
+import { vitePluginCopy } from './plugin/vite-plugin-copy.js'
 
 const target = process.env.TARGET
+const platform = process.env.PLATFORM
 
-export default defineConfig(() => {
+export default defineConfig(():any  => {
   const buildConfig = target === 'ui'
     ? {
         target: "esnext",
@@ -22,27 +24,40 @@ export default defineConfig(() => {
       }
     : {
       lib: {
-        entry: resolve(__dirname, './lib/main.ts'),
+        entry: resolve(__dirname, `./main/${platform}/main.ts`),
         name: 'myLib',
         formats: ['umd'],
-        fileName: () => `main.js`
+        fileName: () => `${platform}/main.js`
       },
     }
+  let pluginsArr = [
+    vue(),
+    viteSingleFile(),
+  ]
+
+  if (target === 'main') {
+    let manifest:any =  vitePluginCopy([
+      {
+        src:  `main/${platform}/manifest.json`,
+        dest: `dist/${platform}`,
+      },
+      {
+        src:  `dist/index.html`,
+        dest: `dist/${platform}`,
+      }
+    ])
+    pluginsArr.push(manifest)
+  }
 
   return {
-    plugins: [
-      vue(),
-      viteSingleFile()
-    ],
+    plugins: pluginsArr,
     build: {
       ...buildConfig as BuildOptions,
       emptyOutDir: false
     },
     resolve: {
       alias: {
-        "@lib": resolve(__dirname, './lib'),
         "@ui": resolve(__dirname, './ui'),
-        "@messages": resolve(__dirname, './messages'),
       }
     },
   }
