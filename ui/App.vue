@@ -55,7 +55,8 @@ function createCanvas(canvas: Element, newVal: string) {
 function downloadImage() {
   const dataURL = canvas.toDataURL('image/jpeg', 1.0);
   const link = document.createElement('a');
-  link.download = 'my-share-qr.jpeg';
+  // TODO: 待补充文件名作图片名称
+  link.download = 'my-share-qr.jpeg';  
   link.href = dataURL;
   link.click();
 }
